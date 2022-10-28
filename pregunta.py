@@ -10,6 +10,7 @@ import pandas as pd
 
 
 def clean_data():
+
     
     def format_date(str_date):
         d = re.search(r'(^\d+)\/(\d+)\/(\d+)', str_date, re.IGNORECASE)
@@ -56,3 +57,4 @@ def clean_data():
     pregunta_siete = df.fecha_de_beneficio.value_counts().to_list()
     pregunta_ocho = df.monto_del_credito.value_counts().to_list()
     pregunta_nueve = df.línea_credito.value_counts().to_list()
+    return df
