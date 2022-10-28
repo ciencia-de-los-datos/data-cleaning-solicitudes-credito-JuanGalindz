@@ -1,15 +1,14 @@
 """
 Limpieza de datos usando Pandas
 -----------------------------------------------------------------------------------------
-
 Realice la limpieza del dataframe. Los tests evaluan si la limpieza fue realizada 
 correctamente. Tenga en cuenta datos faltantes y duplicados.
-
 """
 import pandas as pd
 import re
+
 def clean_data():
-    
+
     def format_date(str_date):
         d = re.search(r'(^\d+)\/(\d+)\/(\d+)', str_date, re.IGNORECASE)
         day = d.group(1)
@@ -28,10 +27,10 @@ def clean_data():
     df.dropna(inplace=True)
 
     for i in df.columns:
-        try:
-            df[i]= df[i].str.lower()
-        except:
-            pass
+      try:
+        df[i]= df[i].str.lower()
+      except:
+        pass
 
     df.idea_negocio = df.idea_negocio.map(lambda x: re.sub("-|_", " ", str(x)))
     df.idea_negocio = df.idea_negocio.str.strip()
@@ -55,3 +54,5 @@ def clean_data():
     pregunta_siete = df.fecha_de_beneficio.value_counts().to_list()
     pregunta_ocho = df.monto_del_credito.value_counts().to_list()
     pregunta_nueve = df.línea_credito.value_counts().to_list()
+    
+    return df
