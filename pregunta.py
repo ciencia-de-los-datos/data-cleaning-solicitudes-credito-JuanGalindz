@@ -46,4 +46,5 @@ def clean_data():
 
     df.drop_duplicates(inplace=True)
     df.dropna(inplace=True)
+    
     return df
